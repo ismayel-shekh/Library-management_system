@@ -3,7 +3,7 @@ asgiref
 Babel
 bcrypt
 blinker
-Brlapi
+
 certifi
 cffi
 chardet
