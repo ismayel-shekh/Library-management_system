@@ -9,7 +9,7 @@ cffi
 chardet
 click
 colorama
-command-not-found
+
 crispy-bootstrap5
 cryptography
 cupshelpers
