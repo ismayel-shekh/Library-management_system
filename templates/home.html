@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .content-container {
+    background: linear-gradient(to right,#37ecba,#72afd3, rgb(62, 62, 118)); /* Gradient colors */
+    border-radius: 15px; /* Adjust the value for rounded corners */
+    padding: 20px; /* Add padding for spacing if needed */
+  }
+  /* .text-box {
+    border: 0px solid #000; 
+    padding: 15px; 
+    margin: 10px 0; 
+  } */
+  .category-container {
+    background-image: url('/static/p.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your background image */
+    background-size: cover; /* Adjust the background size as needed */
+    background-position: center; /* Adjust the background position as needed */
+    padding: 20px; /* Add padding for better visual appearance */
+  }
+  </style>
+  
+  <div class=" d-flex flex-wrap px-5 pt-3 align-items-center">
+      <div class="col-6 text-box content-container bg-white">
+          <h5>
+            
+Imagination Library is a magical place where stories come to life. With shelves filled with colorful books, it's a cozy haven for dreamers of all ages. From picture books that paint vivid worlds to adventure tales that spark the imagination, every corner holds a new journey waiting to unfold. Friendly librarians are ready to guide you through the endless realms of fantasy and knowledge. It's not just a library; it's a gateway to endless possibilities, inviting you to explore, dream, and discover with every turn of a page. Imagination Library is where the joy of reading takes flight, and the magic of stories becomes a cherished reality. Thank's For visited our Library.
+{% if not request.user.is_authenticated %}
+ <a class="lock-buttonsx"href= "{% url 'login' %}">Join Us</a></h5>
+ {% endif %}
+      </div>
+      <div class="col-6">
+          <img style="width: 700px;" class=" m-16" src="{% static 'library books_5419514.png' %}" alt="picture">
+      </div>
+  </div>
+  <br/>
+
+
+  <!-- <style>
+    .category-radio {
+        display: none; /* Hide the default radio buttons */
+    }
+
+    .category-label {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 5px;
+        border: 2px solid #ccc;
+        border-radius: 20px; /* Adjust the border-radius as needed */
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .category-label:hover {
+        background-color: #ce1717;
+    }
+</style>
+
+
+</div>
+  <div class="d-flex flex-wrap p-4">
+    <div class="col-2 bg-white p-3">
+      <h5>All Category</h5>
+      
+      {% for cat in category%}
+      <div class="form-check">
+        <input class="form-check-input category-radio" type="radio" name="category" id="{{cat.id}}"/>
+        <label class="form-check-label category-label" for="{{cat.name}}">
+          
+          <a href="{% url 'category_wice_book' cat.Name %}" class="text-decoration-none text-dark">{{cat.Name}}</a>
+
+          
+        </label>
+      </div>
+      {% endfor %}
+  
+    </div>
+    <div class="col-10 p-3">
+      <div class="d-flex flex-wrap  pt-5 m-5">
+        {% for c in data %}
+        <div class="m-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{c.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Name : {{c.book_name}}</h5>
+                <h5 class="card-title">Price : {{c.book_price}}$</h5>
+                <h5 class="card-title">Brand Name : {{c.category}}</h5>
+              <p class="card-text">{{c.book_detail | truncatewords:10 }}</p>
+              <a href="{% url 'detail_post' c.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  
+  </div> -->
+
+
+
+
+
+
+
+
+
+<style>
+    .card{
+        transition: all 0.3s;
+    }
+    .card:hover{
+        transform: scale(1.15);
+    }
+
+</style>
+
+
+  
+<div class="d-flex justify-content-center align-items-center">
+
+{% for c in category %}
+<div class="mx-2">
+
+<input type="radio" class="btn-check" name="brand" id="{{c.id}}" autocomplete="off" unchecked>
+<label class="btn btn-danger card" for="{{c.Name}} "><a href="{% url 'category_wice_book' c.Name %}" class="text-decoration-none text-black">{{c.Name}}</a></label>
+</div>
+    {% endfor %}
+</div>
+<div class="col-12 p-3">
+    <div class="d-flex flex-wrap  pt-5 m-5">
+{% for c in data %}
+<div class="m-4">
+<div class="card" style="width: 18rem;">
+    <img src="{{c.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Name : {{c.book_name}}</h5>
+        <h5 class="card-title">Price : {{c.book_price}}$</h5>
+        <h5 class="card-title">Brand Name : {{c.category}}</h5>
+      <p class="card-text">{{c.book_detail | truncatewords:10 }}</p>
+      <a href="{% url 'detail_post' c.id %}" class="btn btn-primary">Details</a>
+    </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+
+{% endblock %}
+

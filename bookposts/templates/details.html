@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  body {
+      background-color: #f0f0f0; /* Set the background color of the body */
+  }
+</style>
+<div>
+<div class=" d-flex flex-wrap px-5 pt-3 " style="background-color: None;">
+  <div class="col-6 ">
+    <img src="{{bookpost_app.image.url}}" class="card-img-top pt-2 w-75 m-auto" alt="..." />
+  </div>
+  <div class="col-6 ">
+    <div class="card-body">
+      <h1 class="card-title">Book Name: {{bookpost_app.book_name}}</h1>
+      <h3 class="card-text">Brand : {{bookpost_app.category}}</h3>
+      <p class="card-text">{{bookpost_app.book_detail}}</p>
+      <h1 class="card-title pricing-card-title">Price: ${{bookpost_app.book_price}}<small class="text-muted fw-light">/tk</small></h1>
+      {%if user.is_authenticated %}
+      <a class="m-4 p-2 text-uppercase btn btn-outline-warning" href="{% url 'borrowed_book' bookpost_app.id %}">Borrowing</a>
+      {% endif %}
+
+  </div>
+  </div>
+</div>
+
+
+</div>
+<style>
+  .card{
+      transition: all 0.3s;
+  }
+  .card:hover{
+      transform: scale(1.15);
+  }
+
+</style>
+<div class="col-12">
+  <div class="d-flex justify-content-center align-items-center">
+
+  <h1 class="  text-bg-danger"><span>  Book Reviews</h1></span> 
+  </div>
+<div class="col-12 p-3">
+<div class="d-flex flex-wrap  pt-5 m-4">
+{% for review in reviews %}
+<div class="m-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title text-uppercase" >{{review.name}}</h5>
+    <h5 class="card-title">{{review.email}}</h5>
+    <p class="card-text">{{review.body}}</p>
+    <a href="#" class="btn btn-primary text-uppercase">book</a>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+
+
+<!-- <div class="d-flex row">
+    <div class="card">
+      <img src="{{bookpost_app.image.url}}" class="card-img-top pt-2 w-75 m-auto" alt="..." />
+      <div class="card-body">
+          <h1 class="card-title">Book Name: {{bookpost_app.book_name}}</h1>
+          <h3 class="card-text">Brand : {{bookpost_app.category}}</h3>
+          <p class="card-text">{{bookpost_app.book_detail}}</p>
+          <h3 class="card-text">Price : {{bookpost_app.book_price}}$</h3>
+          {%if user.is_authenticated %}
+          <a class="m-4 p-2 text-black text-decoration-none btn text-white bg-black" href="{% url 'borrowed_book' bookpost_app.id %}"><h4 class="btn btn-danger">Borrowed</h4></a>
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <div class="card m-2">
+    <h5 class="p-3">Total Reviews : {{reviews | length}}</h5>
+    {% for review in reviews %}
+    <div class="card-body border m-2">
+        <p><b>{{review.name}}</b> {{review.created_on}}</p>
+        <p>{{review.body}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <div class="d-flex row">
+    <div class="card">
+      <img src="{{bookpost_app.image.url}}" class="card-img-top pt-2 w-75 m-auto" alt="..." />
+      <div class="card-body">
+          <h1 class="card-title">Book Name: {{bookpost_app.book_name}}</h1>
+          <h3 class="card-text">Brand : {{bookpost_app.category}}</h3>
+          <p class="card-text">{{bookpost_app.book_detail}}</p>
+          <h3 class="card-text">Price : {{bookpost_app.book_price}}$</h3>
+          {%if user.is_authenticated %}
+          <a class="m-4 p-2 text-black text-decoration-none btn text-white bg-black" href="{% url 'borrowed_book' bookpost_app.id %}"><h4 class="btn btn-danger">Borrowed</h4></a>
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <div class="card m-2">
+    <h5 class="p-3">Total Reviews : {{reviews | length}}</h5>
+    {% for review in reviews %}
+    <div class="card-body border m-2">
+        <p><b>{{review.name}}</b> {{review.created_on}}</p>
+        <p>{{review.body}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+  <div class=" d-flex flex-wrap px-5 pt-3 align-items-center">
+    <div class="col-6 text-box content-container bg-white">
+        <h5>
+          
+Imagination Library is a magical place where stories come to life. With shelves filled with colorful books, it's a cozy haven for dreamers of all ages. From picture books that paint vivid worlds to adventure tales that spark the imagination, every corner holds a new journey waiting to unfold. Friendly librarians are ready to guide you through the endless realms of fantasy and knowledge. It's not just a library; it's a gateway to endless possibilities, inviting you to explore, dream, and discover with every turn of a page. Imagination Library is where the joy of reading takes flight, and the magic of stories becomes a cherished reality. Thank's For visited our Library. <a class="lock-buttonsx"href="/">Join Us</a></h5>
+    </div>
+    <div class="col-6">
+        <img style="width: 700px;" class=" m-16" src="" alt="picture">
+    </div>
+</div>
+<br/> -->
+
+
+
+
+{% endblock %}

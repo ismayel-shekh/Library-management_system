@@ -1,0 +1,41 @@
+{% comment %} a {
+    font-size:14px;
+    font-weight:700
+  }
+  .superNav {
+    font-size:13px;
+  }
+  .form-control {
+    outline:none !important;
+    box-shadow: none !important;
+  }
+  @media screen and (max-width:540px){
+    .centerOnMobile {
+      text-align:center
+    }
+  }
+  .body {
+    background-color: green;
+  } {% endcomment %}
+  .card-title{
+    background-color: red;
+  }
+
+  .content-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+
+  @media screen and (max-width: 767px) {
+    .content-holder {
+      flex-direction: row;
+    }
+    
+    .text-div {
+      margin-left: 10px;
+    }
+  }
