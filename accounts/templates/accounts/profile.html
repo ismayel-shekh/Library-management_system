@@ -93,6 +93,12 @@
                             <br/>
                             <br/>
                             <a href="{% url 'pass_change' %}" class="btn">CHANGE PASSWORD</a>
+                            <li class="nav-item">
+                              <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button class="nav-link mx-2 text-uppercase lock-buttonsx" type="submit">Logout</button>
+                              </form>
+                            </li>
                         </div>
                     </div>
                 </div>
